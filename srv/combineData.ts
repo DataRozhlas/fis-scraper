@@ -20,4 +20,8 @@ const seasonPromises = seasons.map(async (season) => {
 
 await Promise.all(seasonPromises);
 console.log(combinedData.length + " events found");
-Bun.write("out/combinedData.json", JSON.stringify(combinedData));
+const uniqueIds = new Set(combinedData.map((event) => event.id));
+console.log(uniqueIds.size + " unique events found");
+const result = Array.from(uniqueIds).map((id) => combinedData.find((event) => event.id === id));
+console.log(result.length + " unique events written");
+Bun.write("out/combinedData.json", JSON.stringify(result));

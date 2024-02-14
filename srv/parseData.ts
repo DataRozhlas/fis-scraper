@@ -5,8 +5,6 @@ const seasons = await readdir("data").then((data) =>
   data.filter((name: string) => name !== ".DS_Store").sort()
 );
 
-console.log(seasons);
-
 const months = [
   "05",
   "06",
