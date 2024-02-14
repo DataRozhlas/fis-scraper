@@ -64,9 +64,9 @@ seasons.forEach(async (season) => {
       return {
         id: Number(row.id),
         cancelled: cancelled === "Cancelled",
-        season: season,
-        month: month,
-        year: index < 8 ? Number(season) - 1 : season,
+        season: Number(season),
+        month: Number(month),
+        year: index < 8 ? Number(season) - 1 : Number(season),
         date,
         place,
         country,
