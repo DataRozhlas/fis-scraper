@@ -1,4 +1,4 @@
-const srcData = await Bun.file("out/combinedData.json").json().then((data) => data.filter((event) => event.disc === "AL"));
+const srcData = await Bun.file("out/combinedData.json").json();//.then((data) => data.filter((event) => event.disc === "CC"));
 const bySeason = srcData.reduce((acc, event) => {
   if (acc.some((e) => e.season === event.season)) {
     const newAcc = acc.map((f) => {
@@ -20,7 +20,9 @@ const bySeason = srcData.reduce((acc, event) => {
   }];
 }, []);
 
-await Bun.write("../src/assets/al.json", JSON.stringify(bySeason));
+const sorted = bySeason.sort((a, b) => a.season - b.season);
+
+await Bun.write("../src/assets/complete.json", JSON.stringify(sorted));
 
 // if (acc.some((e) => e.season === event.season)) {
 //   const index = acc.findIndex((e) => e.season === event.season);
