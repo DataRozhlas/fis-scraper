@@ -1,4 +1,4 @@
-const srcData = await Bun.file("out/combinedData.json").json();//.then((data) => data.filter((event) => event.disc === "CC"));
+const srcData = await Bun.file("out/combinedData.json").json(); //.then((data) => data.filter((event) => event.disc === "CC"));
 const bySeason = srcData.reduce((acc, event) => {
   if (acc.some((e) => e.season === event.season)) {
     const newAcc = acc.map((f) => {
@@ -38,5 +38,5 @@ await Bun.write("../src/assets/complete.json", JSON.stringify(sorted));
 //       completed: event.cancelled ? 0 : 1,
 //   }];
 
-// 
+//
 export {};
